@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="./favicon.ico" />
+    <!-- Preload is necessary because we show these images when we disconnect from the server,
+    but at that point we cannot load these images from the server -->
+    <link rel="preload" href="./assets/gradient-yHQUC_QB.png" as="image" />
+    <link rel="preload" href="./assets/noise-60BoTA8O.png" as="image" />
+    <!-- Preload the fonts -->
+    <link rel="preload" href="./assets/Lora-VariableFont_wght-CZceb_kH.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Regular-Bam3NpBI.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Bold-C_DwAp7Z.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Regular-CEsLFVD9.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Medium-D5MAsWEG.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Bold-C6PDArdf.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="a marimo app" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="manifest" href="./manifest.json" />
+
+    <script data-marimo="true">
+      function __resizeIframe(obj) {
+        const scrollbarHeight = 20; // Max between windows, mac, and linux
+
+        function setHeight() {
+          // Guard against race condition where iframe isn't ready
+          if (!obj.contentWindow?.document?.documentElement) {
+            return;
+          }
+          const element = obj.contentWindow.document.documentElement;
+          // If there is no vertical scrollbar, we don't need to resize the iframe
+          if (element.scrollHeight === element.clientHeight) {
+            return;
+          }
+
+          // Create a new height that includes the scrollbar height if it's visible
+          const hasHorizontalScrollbar = element.scrollWidth > element.clientWidth;
+          const newHeight = element.scrollHeight + (hasHorizontalScrollbar ? scrollbarHeight : 0);
+
+          // Only update the height if it's different from the current height
+          if (obj.style.height !== `${newHeight}px`) {
+            obj.style.height = `${newHeight}px`;
+          }
+        }
+
+        // Resize the iframe to the height of the content and bottom scrollbar height
+        setHeight();
+
+        // Resize the iframe when the content changes
+        const resizeObserver = new ResizeObserver((_entries) => {
+          setHeight();
+        });
+        // Only observe if iframe content is ready
+        if (obj.contentWindow?.document?.body) {
+          resizeObserver.observe(obj.contentWindow.document.body);
+        }
+      }
+    </script>
+    <marimo-filename hidden>notebook.py</marimo-filename>
+    <!-- TODO(Trevor): Legacy, required by VS Code plugin. Remove when plugin is updated (see marimo/server/_templates/template.py) -->
+    <marimo-version data-version="{{ version }}" hidden></marimo-version>
+    <marimo-user-config data-config="{{ user_config }}" hidden></marimo-user-config>
+    <marimo-server-token data-token="{{ server_token }}" hidden></marimo-server-token>
+    <!-- /TODO -->
+    <title>iv 2sls attenuation demo</title>
+    <script type="module" crossorigin src="./assets/index-Dbvu7Fs-.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/preload-helper-BW0IMuFq.js">
+    <link rel="modulepreload" crossorigin href="./assets/chunk-LvLJmgfZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-Bj1aDYRI.js">
+    <link rel="modulepreload" crossorigin href="./assets/compiler-runtime-B3qBwwSJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/jsx-runtime-PbYoItBR.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEventListener-BakX-tnw.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-OkOxlkkM.js">
+    <link rel="modulepreload" crossorigin href="./assets/precisionRound-BOmLQIKI.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-DK1MWd7f.js">
+    <link rel="modulepreload" crossorigin href="./assets/vega-loader.browser-CZV6_g2i.js">
+    <link rel="modulepreload" crossorigin href="./assets/utils-DPvpQ891.js">
+    <link rel="modulepreload" crossorigin href="./assets/clsx-BtEcuwwV.js">
+    <link rel="modulepreload" crossorigin href="./assets/cn-X2M2usMq.js">
+    <link rel="modulepreload" crossorigin href="./assets/badge-6yGCqY1Z.js">
+    <link rel="modulepreload" crossorigin href="./assets/button-BF7GSjhW.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-dom-CSu739Rf.js">
+    <link rel="modulepreload" crossorigin href="./assets/fullscreen-BXI8V5i6.js">
+    <link rel="modulepreload" crossorigin href="./assets/menu-items-CQMqwayA.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DCqDlsgq.js">
+    <link rel="modulepreload" crossorigin href="./assets/createLucideIcon-BTp1tQDO.js">
+    <link rel="modulepreload" crossorigin href="./assets/check-DQmqoJgr.js">
+    <link rel="modulepreload" crossorigin href="./assets/x-9vLEgLY6.js">
+    <link rel="modulepreload" crossorigin href="./assets/select-Cjly7tmx.js">
+    <link rel="modulepreload" crossorigin href="./assets/tooltip-CgQpRVyN.js">
+    <link rel="modulepreload" crossorigin href="./assets/use-toast-kCNiuc-_.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEvent-D91BmmQi.js">
+    <link rel="modulepreload" crossorigin href="./assets/invariant-C2E8KCbD.js">
+    <link rel="modulepreload" crossorigin href="./assets/isObject-DvLSfCY5.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseFor-DKD1r8uL.js">
+    <link rel="modulepreload" crossorigin href="./assets/merge-_9WLTEyt.js">
+    <link rel="modulepreload" crossorigin href="./assets/zod-H_cgTO0M.js">
+    <link rel="modulepreload" crossorigin href="./assets/utils-CCzEbCvM.js">
+    <link rel="modulepreload" crossorigin href="./assets/Deferred-BMfCOLaw.js">
+    <link rel="modulepreload" crossorigin href="./assets/uuid-ClFZlR7U.js">
+    <link rel="modulepreload" crossorigin href="./assets/DeferredRequestRegistry-RuL7NV1n.js">
+    <link rel="modulepreload" crossorigin href="./assets/constants-B9JJ72XE.js">
+    <link rel="modulepreload" crossorigin href="./assets/session-CsT5Gg9j.js">
+    <link rel="modulepreload" crossorigin href="./assets/config-Vyzo6FSF.js">
+    <link rel="modulepreload" crossorigin href="./assets/requests-KshNNAOp.js">
+    <link rel="modulepreload" crossorigin href="./assets/useLifecycle-Baf35rp4.js">
+    <link rel="modulepreload" crossorigin href="./assets/useNonce-0SWz6w4W.js">
+    <link rel="modulepreload" crossorigin href="./assets/useTheme-COorCcXC.js">
+    <link rel="modulepreload" crossorigin href="./assets/arrays-DWxvyYxP.js">
+    <link rel="modulepreload" crossorigin href="./assets/strings-DvZlHYnD.js">
+    <link rel="modulepreload" crossorigin href="./assets/once-CXj_gH7S.js">
+    <link rel="modulepreload" crossorigin href="./assets/capabilities-CjNGDxxx.js">
+    <link rel="modulepreload" crossorigin href="./assets/createReducer-3wF4dU7I.js">
+    <link rel="modulepreload" crossorigin href="./assets/paths-DhuNSnZ_.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-Dez1I5M9.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-B0WqBUnf.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CwfKvuyQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CNKFZCiw.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-ZjSH4Z6x.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-D-2yWcX9.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DblYTes5.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BtrqKtvn.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CfGDksO-.js">
+    <link rel="modulepreload" crossorigin href="./assets/stex-0ac7Aukl.js">
+    <link rel="modulepreload" crossorigin href="./assets/toDate-DCE7d2fN.js">
+    <link rel="modulepreload" crossorigin href="./assets/purify.es-DfJp_of2.js">
+    <link rel="modulepreload" crossorigin href="./assets/cjs-DXo9vDEJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/isSymbol-BT6B8Bon.js">
+    <link rel="modulepreload" crossorigin href="./assets/now-CsYTPAhW.js">
+    <link rel="modulepreload" crossorigin href="./assets/debounce-OiXznToA.js">
+    <link rel="modulepreload" crossorigin href="./assets/database-zap-DIlSqcdp.js">
+    <link rel="modulepreload" crossorigin href="./assets/main-DmhaVp6Y.js">
+    <link rel="modulepreload" crossorigin href="./assets/cells-ChH37lAD.js">
+    <link rel="modulepreload" crossorigin href="./assets/kbd-UVzWBHfi.js">
+    <link rel="modulepreload" crossorigin href="./assets/useInstallPackage-C1Dd0aIZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-dialog-CC0gG4Av.js">
+    <link rel="modulepreload" crossorigin href="./assets/dialog-DkJmIrsG.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDebounce-CpLI2dsc.js">
+    <link rel="modulepreload" crossorigin href="./assets/numbers-_ry1Nlla.js">
+    <link rel="modulepreload" crossorigin href="./assets/SSRProvider-DX2edArU.js">
+    <link rel="modulepreload" crossorigin href="./assets/context-C2Ie4tn_.js">
+    <link rel="modulepreload" crossorigin href="./assets/useNumberFormatter-CuxZh3Bq.js">
+    <link rel="modulepreload" crossorigin href="./assets/usePress-BSFUeqnS.js">
+    <link rel="modulepreload" crossorigin href="./assets/input-DB2LiTiQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/ImperativeModal-B62Q6S9l.js">
+    <link rel="modulepreload" crossorigin href="./assets/cell-link-BZg1pgHT.js">
+    <link rel="modulepreload" crossorigin href="./assets/config-CjCV0n0j.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-1y_DnRWn.js">
+    <link rel="modulepreload" crossorigin href="./assets/chevron-right-C7RH0Nc7.js">
+    <link rel="modulepreload" crossorigin href="./assets/dropdown-menu-DfGLyCbP.js">
+    <link rel="modulepreload" crossorigin href="./assets/links-CCkJpphF.js">
+    <link rel="modulepreload" crossorigin href="./assets/useRunCells-Dmf7GVGt.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-D8MtpXgN.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-IBNGDypD.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-icon-EHMT-qlr.js">
+    <link rel="modulepreload" crossorigin href="./assets/RenderHTML-DZz6EFTa.js">
+    <link rel="modulepreload" crossorigin href="./assets/datasource-ii4hOmhM.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-DIDUL4YY.js">
+    <link rel="modulepreload" crossorigin href="./assets/hat-glasses-DlK0E4SX.js">
+    <link rel="modulepreload" crossorigin href="./assets/package-BTIV9-Dk.js">
+    <link rel="modulepreload" crossorigin href="./assets/sparkles-COaEc8Qn.js">
+    <link rel="modulepreload" crossorigin href="./assets/MarimoErrorOutput-t_4q7nKD.js">
+    <link rel="modulepreload" crossorigin href="./assets/ErrorBoundary-Bo313Z9X.js">
+    <link rel="modulepreload" crossorigin href="./assets/eye-off-DI0EQXw0.js">
+    <link rel="modulepreload" crossorigin href="./assets/refresh-cw-C9FftltI.js">
+    <link rel="modulepreload" crossorigin href="./assets/tree-actions-DONHntzY.js">
+    <link rel="modulepreload" crossorigin href="./assets/spinner-BbI9qk88.js">
+    <link rel="modulepreload" crossorigin href="./assets/html-to-image-B9XAiAY5.js">
+    <link rel="modulepreload" crossorigin href="./assets/focus-CeA7VBO7.js">
+    <link rel="modulepreload" crossorigin href="./assets/useAsyncData-DAQcLiyE.js">
+    <link rel="modulepreload" crossorigin href="./assets/LazyAnyLanguageCodeMirror-BSGwa0jm.js">
+    <link rel="modulepreload" crossorigin href="./assets/micromark-factory-space-BUQpMdx2.js">
+    <link rel="modulepreload" crossorigin href="./assets/chunk-5FQGJX7Z-OScactr4.js">
+    <link rel="modulepreload" crossorigin href="./assets/markdown-renderer-BxBgsCTf.js">
+    <link rel="modulepreload" crossorigin href="./assets/command-DRHbYHUP.js">
+    <link rel="modulepreload" crossorigin href="./assets/field-DlNY-dDH.js">
+    <link rel="modulepreload" crossorigin href="./assets/popover-DMNO6Poc.js">
+    <link rel="modulepreload" crossorigin href="./assets/errors-Bi-kjxOy.js">
+    <link rel="modulepreload" crossorigin href="./assets/download-BVqpOaYz.js">
+    <link rel="modulepreload" crossorigin href="./assets/table-CnW850Wt.js">
+    <link rel="modulepreload" crossorigin href="./assets/useIframeCapabilities-B0dNZiKK.js">
+    <link rel="modulepreload" crossorigin href="./assets/error-banner-DEWyImqa.js">
+    <link rel="modulepreload" crossorigin href="./assets/formats-ZGU43GQU.js">
+    <link rel="modulepreload" crossorigin href="./assets/en-US-BXNio91F.js">
+    <link rel="modulepreload" crossorigin href="./assets/isValid-DKyiOp4U.js">
+    <link rel="modulepreload" crossorigin href="./assets/dates-D8uxHHPL.js">
+    <link rel="modulepreload" crossorigin href="./assets/extends-CeSFM22p.js">
+    <link rel="modulepreload" crossorigin href="./assets/emotion-is-prop-valid.esm-CK2zY6a8.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDateFormatter-CAlTJ8HV.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-icons.esm-DCqqMD4w.js">
+    <link rel="modulepreload" crossorigin href="./assets/RSPContexts-VzcTZjG1.js">
+    <link rel="modulepreload" crossorigin href="./assets/table-DxdydCSG.js">
+    <link rel="modulepreload" crossorigin href="./assets/ellipsis-D0iYysLh.js">
+    <link rel="modulepreload" crossorigin href="./assets/external-link-BktyywYg.js">
+    <link rel="modulepreload" crossorigin href="./assets/message-circle-RkIzfQEi.js">
+    <link rel="modulepreload" crossorigin href="./assets/plus-ZXRHY1up.js">
+    <link rel="modulepreload" crossorigin href="./assets/trash-2-CqTUwVuU.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-resizable-panels.browser.esm-Ce2ksurd.js">
+    <link rel="modulepreload" crossorigin href="./assets/JsonOutput-Cqq7S3wn.js">
+    <link rel="modulepreload" crossorigin href="./assets/chart-no-axes-column-DVEV2j1H.js">
+    <link rel="modulepreload" crossorigin href="./assets/square-function-Dx0pKHko.js">
+    <link rel="modulepreload" crossorigin href="./assets/spec-CDgWI0fT.js">
+    <link rel="modulepreload" crossorigin href="./assets/column-preview-47aOuXOh.js">
+    <link rel="modulepreload" crossorigin href="./assets/icons-avFV3lBF.js">
+    <link rel="modulepreload" crossorigin href="./assets/radio-group-xSHDhdM7.js">
+    <link rel="modulepreload" crossorigin href="./assets/floating-outline-Dy8nXch3.js">
+    <link rel="modulepreload" crossorigin href="./assets/objectWithoutPropertiesLoose-BkUn3I0-.js">
+    <link rel="modulepreload" crossorigin href="./assets/esm-X3Tr2pur.js">
+    <link rel="modulepreload" crossorigin href="./assets/readonly-python-code-C12Tt_qR.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-headphone-CUN2DC78.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-BvoBtS_V.js">
+    <link rel="modulepreload" crossorigin href="./assets/image-BzUcK6ho.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-icons-BSYRCaKq.js">
+    <link rel="modulepreload" crossorigin href="./assets/switch-DqXjpgoL.js">
+    <link rel="modulepreload" crossorigin href="./assets/events-XR_LpvHc.js">
+    <link rel="modulepreload" crossorigin href="./assets/globals-B2VpoaLA.js">
+    <link rel="modulepreload" crossorigin href="./assets/share-DQjChRJG.js">
+    <link rel="modulepreload" crossorigin href="./assets/blob-BiK5xmlC.js">
+    <link rel="modulepreload" crossorigin href="./assets/memoize-Tp7rARFe.js">
+    <link rel="modulepreload" crossorigin href="./assets/get-C-qh_et5.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseSet-CsW0tABf.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-Csq9SFHN.js">
+    <link rel="modulepreload" crossorigin href="./assets/label-CFvCMYuj.js">
+    <link rel="modulepreload" crossorigin href="./assets/textarea-D_WnJbC1.js">
+    <link rel="modulepreload" crossorigin href="./assets/refresh-ccw-Bee7JLOl.js">
+    <link rel="modulepreload" crossorigin href="./assets/form-x2vXRBGq.js">
+    <link rel="modulepreload" crossorigin href="./assets/renderShortcut-DTZeni4V.js">
+    <link rel="modulepreload" crossorigin href="./assets/useBoolean-DmobZaim.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDeepCompareMemoize-CWcgQCbT.js">
+    <link rel="modulepreload" crossorigin href="./assets/types-BnrgJ4Gh.js">
+    <link rel="modulepreload" crossorigin href="./assets/semaphore-X3ApuO41.js">
+    <link rel="modulepreload" crossorigin href="./assets/fileToBase64-BSOFR3RV.js">
+    <link rel="modulepreload" crossorigin href="./assets/pathUtils-BXCjaLHB.js">
+    <link rel="modulepreload" crossorigin href="./assets/prop-types-B6Y2e__V.js">
+    <link rel="modulepreload" crossorigin href="./assets/es-EItoYvXh.js">
+    <link rel="modulepreload" crossorigin href="./assets/_hasPath-hMc_3QZy.js">
+    <link rel="modulepreload" crossorigin href="./assets/hasIn-CSsM95b1.js">
+    <link rel="modulepreload" crossorigin href="./assets/flatten-Bd5tsfm_.js">
+    <link rel="modulepreload" crossorigin href="./assets/pick-D1xb4gl6.js">
+    <link rel="modulepreload" crossorigin href="./assets/code-xml-tqeFGeKJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/house-DHu4JLi3.js">
+    <link rel="modulepreload" crossorigin href="./assets/square-35tXIgiR.js">
+    <link rel="modulepreload" crossorigin href="./assets/triangle-alert-D8Ft17xk.js">
+    <link rel="modulepreload" crossorigin href="./assets/bundle.esm-D544r2Sr.js">
+    <link rel="stylesheet" crossorigin href="./assets/cells-BVzo2MHf.css">
+    <link rel="stylesheet" crossorigin href="./assets/markdown-renderer-DdDKmWlR.css">
+    <link rel="stylesheet" crossorigin href="./assets/JsonOutput-BQtz7-np.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-DZAttTAm.css">
+  <marimo-wasm hidden=""></marimo-wasm>
+    <script>
+        if (window.location.protocol === 'file:') {
+            alert('Warning: This file must be served by an HTTP server to function correctly.');
+        }
+    </script>
+    
+    <style>
+        #save-button {
+            display: none !important;
+        }
+        #filename-input {
+            display: none !important;
+        }
+    </style>
+    
+<script data-marimo="true">
+    Object.defineProperty(window, "__MARIMO_EXPORT_CONTEXT__", {
+        value: Object.freeze({
+            trusted: true,
+            notebookCode: "# /// script\n# requires-python = \"\u003E=3.11\"\n# dependencies = [\n#     \"marimo\",\n#     \"numpy\",\n#     \"pandas\",\n#     \"matplotlib\",\n#     \"statsmodels\",\n# ]\n# ///\n\nimport marimo\n\n__generated_with = \"0.23.14\"\napp = marimo.App(width=\"medium\")\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    # Feeling attenuation bias: OLS vs. 2SLS\n\n    This notebook uses the country-level data from **Acemoglu, Johnson \u0026\n    Robinson (2001), \"The Colonial Origins of Comparative Development\"**\n    (Appendix Table A2, *American Economic Review* 91(5)) \u2014 the settler-mortality\n    instrument for institutions.\n\n    Three variables, 64 former colonies:\n\n    - `logpgp95` \u2014 log GDP per capita (PPP), 1995\n    - `avexpr` \u2014 average protection against expropriation risk, 1985\u20131995 (the institutions measure)\n    - `logem4` \u2014 log of settler mortality, the instrument\n\n    The idea: settler mortality shaped the *type* of colonial institution\n    Europeans built (extractive vs. settler colony), and \u2014 argue AJR \u2014 has no\n    direct effect on 1995 income except *through* institutions. That's the\n    exclusion restriction.\n\n    Below, drag a slider to inject classical measurement error into the\n    institutions variable and watch what happens to two ways of estimating\n    its effect on income: plain OLS, and 2SLS using settler mortality as the\n    instrument.\n    \"\"\")\n    return\n\n\n@app.cell(hide_code=True)\ndef _():\n    import io\n\n    import numpy as np\n    import pandas as pd\n    import statsmodels.api as sm\n\n    # Settler mortality is stored in levels (Appendix Table A2); we take logs.\n    AJR_CSV = \"\"\"country,code,logpgp95,avexpr,mortality\n    Algeria,DZA,8.39,6.50,78.2\n    Angola,AGO,7.77,5.36,280\n    Argentina,ARG,9.13,6.39,68.9\n    Australia,AUS,9.90,9.32,8.55\n    Bahamas,BHS,9.29,7.50,85\n    Bangladesh,BGD,6.88,5.14,71.41\n    Bolivia,BOL,7.93,5.64,71\n    Brazil,BRA,8.73,7.91,71\n    Burkina Faso,BFA,6.85,4.45,280\n    Cameroon,CMR,7.50,6.45,280\n    Canada,CAN,9.99,9.73,16.1\n    Chile,CHL,9.34,7.82,68.9\n    Colombia,COL,8.81,7.32,71\n    Congo (Brazzaville),COG,7.42,4.68,240\n    Costa Rica,CRI,8.79,7.05,78.1\n    Cote d'Ivoire,CIV,7.44,7.00,668\n    Dominican Republic,DOM,8.36,6.18,130\n    Ecuador,ECU,8.47,6.55,71\n    Egypt,EGY,7.95,6.77,67.8\n    El Salvador,SLV,7.95,5.00,78.1\n    Ethiopia,ETH,6.11,5.73,26\n    Gabon,GAB,8.90,7.82,280\n    Gambia,GMB,7.27,8.27,1470\n    Ghana,GHA,7.37,6.27,668\n    Guatemala,GTM,8.29,5.14,71\n    Guinea,GIN,7.49,6.55,483\n    Guyana,GUY,7.90,5.89,32.18\n    Haiti,HTI,7.15,3.73,130\n    Honduras,HND,7.69,5.32,78.1\n    Hong Kong,HKG,10.05,8.14,14.9\n    India,IND,7.33,8.27,48.63\n    Indonesia,IDN,8.07,7.59,170\n    Jamaica,JAM,8.19,7.09,130\n    Kenya,KEN,7.06,6.05,145\n    Madagascar,MDG,6.84,4.45,536.04\n    Malaysia,MYS,8.89,7.95,17.7\n    Mali,MLI,6.57,4.00,2940\n    Malta,MLT,9.43,7.23,16.3\n    Mexico,MEX,8.94,7.50,71\n    Morocco,MAR,8.04,7.09,78.2\n    New Zealand,NZL,9.76,9.73,8.55\n    Nicaragua,NIC,7.54,5.23,163.3\n    Niger,NER,6.73,5.00,400\n    Nigeria,NGA,6.81,5.55,2004\n    Pakistan,PAK,7.35,6.05,36.99\n    Panama,PAN,8.84,5.91,163.3\n    Paraguay,PRY,8.21,6.95,78.1\n    Peru,PER,8.40,5.77,71\n    Senegal,SEN,7.40,6.00,164.66\n    Sierra Leone,SLE,6.25,5.82,483\n    Singapore,SGP,10.15,9.32,17.7\n    South Africa,ZAF,8.89,6.86,15.5\n    Sri Lanka,LKA,7.73,6.05,69.8\n    Sudan,SDN,7.31,4.00,88.2\n    Tanzania,TZA,6.25,6.64,145\n    Togo,TGO,7.22,6.91,668\n    Trinidad and Tobago,TTO,8.77,7.45,85\n    Tunisia,TUN,8.48,6.45,63\n    Uganda,UGA,6.97,4.45,280\n    Uruguay,URY,9.03,7.00,71\n    USA,USA,10.22,10.00,15\n    Venezuela,VEN,9.07,7.14,78.1\n    Vietnam,VNM,7.28,6.41,140\n    Zaire,ZAR,6.87,3.50,240\n    \"\"\"\n\n    df = pd.read_csv(io.StringIO(AJR_CSV))\n    df[\"logem4\"] = np.log(df[\"mortality\"].astype(float))\n    df = df.dropna(subset=[\"logpgp95\", \"avexpr\", \"logem4\"]).reset_index(drop=True)\n\n    def ols_beta_se(y, x):\n        res = sm.OLS(y, sm.add_constant(x)).fit(cov_type=\"HC1\")\n        name = x.name if hasattr(x, \"name\") and x.name else 0\n        key = name if name in res.params.index else res.params.index[1]\n        return float(res.params[key]), float(res.bse[key])\n\n    def iv_beta_se(y, endog, instrument):\n        \"\"\"Just-identified 2SLS via the IV slope formula + delta-method SE.\"\"\"\n        z = sm.add_constant(instrument)\n        # Reduced form and first stage\n        rf = sm.OLS(y, z).fit()\n        fs = sm.OLS(endog, z).fit()\n        pi1 = float(fs.params.iloc[1])\n        if abs(pi1) \u003C 1e-12:\n            return float(\"nan\"), float(\"nan\")\n        beta = float(rf.params.iloc[1]) / pi1\n\n        # Residuals for asymptotic IV variance (homoskedastic form is enough here)\n        x = sm.add_constant(endog.to_numpy())\n        resid = y.to_numpy() - x @ np.array([float(rf.params.iloc[0]), beta])\n        n = len(y)\n        sigma2 = float(np.dot(resid, resid) / n)\n        z_mat = z.to_numpy()\n        endog_arr = endog.to_numpy()\n        # Var(\u03b2) \u2248 \u03c3\u00b2 / (n * Cov(x\u0302, x)\u00b2 / Var(x\u0302)) with x\u0302 from first stage\n        x_hat = fs.fittedvalues.to_numpy()\n        s_xh_x = float(np.cov(x_hat, endog_arr, ddof=1)[0, 1])\n        se = float(np.sqrt(sigma2 / (n * s_xh_x**2))) if abs(s_xh_x) \u003E 1e-12 else float(\"nan\")\n        return beta, se\n\n    return df, iv_beta_se, np, ols_beta_se\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    ## 1. The first stage (fixed)\n    \"\"\")\n    return\n\n\n@app.cell(hide_code=True)\ndef _(df, mo):\n    import matplotlib.pyplot as plt\n\n    fig1, ax1 = plt.subplots(figsize=(6, 4.2))\n    ax1.scatter(df[\"logem4\"], df[\"avexpr\"], color=\"#2f6f8f\", alpha=0.75)\n    ax1.set_xlabel(\"Log settler mortality (instrument)\")\n    ax1.set_ylabel(\"Avg. protection against expropriation (institutions)\")\n    ax1.set_title(\"First stage: mortality predicts institutions\")\n    fig1.tight_layout()\n\n    mo.mpl.interactive(fig1)\n    return (plt,)\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    Countries where European settlers died in droves (West Africa, e.g.)\n    got extractive institutions built to strip resources, not to last.\n    Countries that were survivable (Australia, the US, New Zealand) got\n    institutions built for settlers to live under long-term \u2014 and those\n    institutions persisted. That's the downward-sloping relationship above.\n\n    ## 2. Drag the slider: how much noise is in our institutions measure?\n    \"\"\")\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    noise_slider = mo.ui.slider(\n        start=0.0,\n        stop=2.5,\n        step=0.05,\n        value=0.0,\n        label=\"Measurement noise added to institutions (in SDs of avexpr)\",\n        show_value=True,\n        full_width=True,\n    )\n    seed_number = mo.ui.number(start=0, stop=9999, value=42, label=\"Random seed\")\n    mo.hstack([noise_slider, seed_number], justify=\"start\", gap=2)\n    return noise_slider, seed_number\n\n\n@app.cell(hide_code=True)\ndef _(df, noise_slider, np, seed_number):\n    rng = np.random.default_rng(int(seed_number.value))\n    avexpr_sd = df[\"avexpr\"].std()\n    noise = rng.normal(0, noise_slider.value * avexpr_sd, size=len(df))\n    df_noisy = df.copy()\n    df_noisy[\"avexpr_noisy\"] = df[\"avexpr\"] + noise\n    return (df_noisy,)\n\n\n@app.cell(hide_code=True)\ndef _(df_noisy, iv_beta_se, ols_beta_se):\n    ols_beta, ols_se = ols_beta_se(df_noisy[\"logpgp95\"], df_noisy[\"avexpr_noisy\"])\n    iv_beta, iv_se = iv_beta_se(\n        df_noisy[\"logpgp95\"],\n        df_noisy[\"avexpr_noisy\"],\n        df_noisy[\"logem4\"],\n    )\n    return iv_beta, iv_se, ols_beta, ols_se\n\n\n@app.cell(hide_code=True)\ndef _(iv_beta, iv_se, mo, noise_slider, ols_beta, ols_se):\n    mo.hstack(\n        [\n            mo.stat(\n                value=f\"{ols_beta:.3f}\",\n                label=\"OLS coefficient (\u00b1 {:.3f} SE)\".format(ols_se),\n                caption=\"log GDP per capita per unit of institutions\",\n                bordered=True,\n            ),\n            mo.stat(\n                value=f\"{iv_beta:.3f}\",\n                label=\"2SLS coefficient (\u00b1 {:.3f} SE)\".format(iv_se),\n                caption=\"instrumented by log settler mortality\",\n                bordered=True,\n            ),\n        ],\n        gap=2,\n    ) if noise_slider.value \u003E= 0 else None\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    ## 3. Watch it happen across the whole noise range\n    \"\"\")\n    return\n\n\n@app.cell(hide_code=True)\ndef _(df, iv_beta_se, np, ols_beta_se, seed_number):\n    def estimate_at(noise_level, seed):\n        rng_ = np.random.default_rng(seed)\n        avexpr_sd_ = df[\"avexpr\"].std()\n        d = df.copy()\n        d[\"avexpr_noisy\"] = d[\"avexpr\"] + rng_.normal(\n            0, noise_level * avexpr_sd_, size=len(d)\n        )\n        ols_b, _ = ols_beta_se(d[\"logpgp95\"], d[\"avexpr_noisy\"])\n        iv_b, _ = iv_beta_se(d[\"logpgp95\"], d[\"avexpr_noisy\"], d[\"logem4\"])\n        return ols_b, iv_b\n\n    noise_grid = np.linspace(0, 2.5, 30)\n    curve = [estimate_at(n, int(seed_number.value)) for n in noise_grid]\n    ols_curve = [c[0] for c in curve]\n    iv_curve = [c[1] for c in curve]\n    return iv_curve, noise_grid, ols_curve\n\n\n@app.cell(hide_code=True)\ndef _(iv_curve, mo, noise_grid, noise_slider, ols_curve, plt):\n    fig2, ax2 = plt.subplots(figsize=(7, 4.5))\n    ax2.plot(noise_grid, ols_curve, color=\"#c0562f\", linewidth=2, label=\"OLS\")\n    ax2.plot(noise_grid, iv_curve, color=\"#2f6f8f\", linewidth=2, label=\"2SLS (IV)\")\n    ax2.axvline(noise_slider.value, color=\"gray\", linestyle=\"--\", linewidth=1)\n    ax2.axhline(0, color=\"black\", linewidth=0.6)\n    ax2.set_xlabel(\"Measurement noise added (SDs of avexpr)\")\n    ax2.set_ylabel(\"Estimated coefficient on institutions\")\n    ax2.set_title(\"OLS attenuates toward zero; 2SLS doesn't\")\n    ax2.legend()\n    fig2.tight_layout()\n\n    mo.mpl.interactive(fig2)\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    ## Why this happens\n\n    Classical measurement error in a regressor biases OLS **toward zero** \u2014\n    the noisier your measure of institutions, the more the true signal gets\n    drowned out, and the estimated effect shrinks. That's attenuation bias,\n    and the curve above shows it happening in real time as the slider moves.\n\n    2SLS doesn't have this problem *for this specific kind of error*, because\n    settler mortality was fixed centuries before anyone measured\n    expropriation risk in the 1980s\u201390s. The noise we're injecting is\n    uncorrelated with the instrument by construction, so it passes through\n    to the first stage but doesn't bias the ratio of reduced-form to\n    first-stage coefficients that 2SLS relies on.\n\n    This is also, not coincidentally, the exact mechanism AJR lean on for\n    their *substantive* claim: they argue current institutions are measured\n    with error and confounded by reverse causation from income, which is why\n    OLS understates the effect of institutions on growth relative to 2SLS in\n    their actual results (Table 4).\n    \"\"\")\n    return\n\n\n@app.cell\ndef _():\n    import marimo as mo\n\n    return (mo,)\n\n\nif __name__ == \"__main__\":\n    app.run()\n",
+        }),
+        writable: false,
+        configurable: false,
+    });
+</script>
+<marimo-code hidden="">%23%20%2F%2F%2F%20script%0A%23%20requires-python%20%3D%20%22%3E%3D3.11%22%0A%23%20dependencies%20%3D%20%5B%0A%23%20%20%20%20%20%22marimo%22%2C%0A%23%20%20%20%20%20%22numpy%22%2C%0A%23%20%20%20%20%20%22pandas%22%2C%0A%23%20%20%20%20%20%22matplotlib%22%2C%0A%23%20%20%20%20%20%22statsmodels%22%2C%0A%23%20%5D%0A%23%20%2F%2F%2F%0A%0Aimport%20marimo%0A%0A__generated_with%20%3D%20%220.23.14%22%0Aapp%20%3D%20marimo.App(width%3D%22medium%22)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%20Feeling%20attenuation%20bias%3A%20OLS%20vs.%202SLS%0A%0A%20%20%20%20This%20notebook%20uses%20the%20country-level%20data%20from%20**Acemoglu%2C%20Johnson%20%26%0A%20%20%20%20Robinson%20(2001)%2C%20%22The%20Colonial%20Origins%20of%20Comparative%20Development%22**%0A%20%20%20%20(Appendix%20Table%20A2%2C%20*American%20Economic%20Review*%2091(5))%20%E2%80%94%20the%20settler-mortality%0A%20%20%20%20instrument%20for%20institutions.%0A%0A%20%20%20%20Three%20variables%2C%2064%20former%20colonies%3A%0A%0A%20%20%20%20-%20%60logpgp95%60%20%E2%80%94%20log%20GDP%20per%20capita%20(PPP)%2C%201995%0A%20%20%20%20-%20%60avexpr%60%20%E2%80%94%20average%20protection%20against%20expropriation%20risk%2C%201985%E2%80%931995%20(the%20institutions%20measure)%0A%20%20%20%20-%20%60logem4%60%20%E2%80%94%20log%20of%20settler%20mortality%2C%20the%20instrument%0A%0A%20%20%20%20The%20idea%3A%20settler%20mortality%20shaped%20the%20*type*%20of%20colonial%20institution%0A%20%20%20%20Europeans%20built%20(extractive%20vs.%20settler%20colony)%2C%20and%20%E2%80%94%20argue%20AJR%20%E2%80%94%20has%20no%0A%20%20%20%20direct%20effect%20on%201995%20income%20except%20*through*%20institutions.%20That's%20the%0A%20%20%20%20exclusion%20restriction.%0A%0A%20%20%20%20Below%2C%20drag%20a%20slider%20to%20inject%20classical%20measurement%20error%20into%20the%0A%20%20%20%20institutions%20variable%20and%20watch%20what%20happens%20to%20two%20ways%20of%20estimating%0A%20%20%20%20its%20effect%20on%20income%3A%20plain%20OLS%2C%20and%202SLS%20using%20settler%20mortality%20as%20the%0A%20%20%20%20instrument.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_()%3A%0A%20%20%20%20import%20io%0A%0A%20%20%20%20import%20numpy%20as%20np%0A%20%20%20%20import%20pandas%20as%20pd%0A%20%20%20%20import%20statsmodels.api%20as%20sm%0A%0A%20%20%20%20%23%20Settler%20mortality%20is%20stored%20in%20levels%20(Appendix%20Table%20A2)%3B%20we%20take%20logs.%0A%20%20%20%20AJR_CSV%20%3D%20%22%22%22country%2Ccode%2Clogpgp95%2Cavexpr%2Cmortality%0A%20%20%20%20Algeria%2CDZA%2C8.39%2C6.50%2C78.2%0A%20%20%20%20Angola%2CAGO%2C7.77%2C5.36%2C280%0A%20%20%20%20Argentina%2CARG%2C9.13%2C6.39%2C68.9%0A%20%20%20%20Australia%2CAUS%2C9.90%2C9.32%2C8.55%0A%20%20%20%20Bahamas%2CBHS%2C9.29%2C7.50%2C85%0A%20%20%20%20Bangladesh%2CBGD%2C6.88%2C5.14%2C71.41%0A%20%20%20%20Bolivia%2CBOL%2C7.93%2C5.64%2C71%0A%20%20%20%20Brazil%2CBRA%2C8.73%2C7.91%2C71%0A%20%20%20%20Burkina%20Faso%2CBFA%2C6.85%2C4.45%2C280%0A%20%20%20%20Cameroon%2CCMR%2C7.50%2C6.45%2C280%0A%20%20%20%20Canada%2CCAN%2C9.99%2C9.73%2C16.1%0A%20%20%20%20Chile%2CCHL%2C9.34%2C7.82%2C68.9%0A%20%20%20%20Colombia%2CCOL%2C8.81%2C7.32%2C71%0A%20%20%20%20Congo%20(Brazzaville)%2CCOG%2C7.42%2C4.68%2C240%0A%20%20%20%20Costa%20Rica%2CCRI%2C8.79%2C7.05%2C78.1%0A%20%20%20%20Cote%20d'Ivoire%2CCIV%2C7.44%2C7.00%2C668%0A%20%20%20%20Dominican%20Republic%2CDOM%2C8.36%2C6.18%2C130%0A%20%20%20%20Ecuador%2CECU%2C8.47%2C6.55%2C71%0A%20%20%20%20Egypt%2CEGY%2C7.95%2C6.77%2C67.8%0A%20%20%20%20El%20Salvador%2CSLV%2C7.95%2C5.00%2C78.1%0A%20%20%20%20Ethiopia%2CETH%2C6.11%2C5.73%2C26%0A%20%20%20%20Gabon%2CGAB%2C8.90%2C7.82%2C280%0A%20%20%20%20Gambia%2CGMB%2C7.27%2C8.27%2C1470%0A%20%20%20%20Ghana%2CGHA%2C7.37%2C6.27%2C668%0A%20%20%20%20Guatemala%2CGTM%2C8.29%2C5.14%2C71%0A%20%20%20%20Guinea%2CGIN%2C7.49%2C6.55%2C483%0A%20%20%20%20Guyana%2CGUY%2C7.90%2C5.89%2C32.18%0A%20%20%20%20Haiti%2CHTI%2C7.15%2C3.73%2C130%0A%20%20%20%20Honduras%2CHND%2C7.69%2C5.32%2C78.1%0A%20%20%20%20Hong%20Kong%2CHKG%2C10.05%2C8.14%2C14.9%0A%20%20%20%20India%2CIND%2C7.33%2C8.27%2C48.63%0A%20%20%20%20Indonesia%2CIDN%2C8.07%2C7.59%2C170%0A%20%20%20%20Jamaica%2CJAM%2C8.19%2C7.09%2C130%0A%20%20%20%20Kenya%2CKEN%2C7.06%2C6.05%2C145%0A%20%20%20%20Madagascar%2CMDG%2C6.84%2C4.45%2C536.04%0A%20%20%20%20Malaysia%2CMYS%2C8.89%2C7.95%2C17.7%0A%20%20%20%20Mali%2CMLI%2C6.57%2C4.00%2C2940%0A%20%20%20%20Malta%2CMLT%2C9.43%2C7.23%2C16.3%0A%20%20%20%20Mexico%2CMEX%2C8.94%2C7.50%2C71%0A%20%20%20%20Morocco%2CMAR%2C8.04%2C7.09%2C78.2%0A%20%20%20%20New%20Zealand%2CNZL%2C9.76%2C9.73%2C8.55%0A%20%20%20%20Nicaragua%2CNIC%2C7.54%2C5.23%2C163.3%0A%20%20%20%20Niger%2CNER%2C6.73%2C5.00%2C400%0A%20%20%20%20Nigeria%2CNGA%2C6.81%2C5.55%2C2004%0A%20%20%20%20Pakistan%2CPAK%2C7.35%2C6.05%2C36.99%0A%20%20%20%20Panama%2CPAN%2C8.84%2C5.91%2C163.3%0A%20%20%20%20Paraguay%2CPRY%2C8.21%2C6.95%2C78.1%0A%20%20%20%20Peru%2CPER%2C8.40%2C5.77%2C71%0A%20%20%20%20Senegal%2CSEN%2C7.40%2C6.00%2C164.66%0A%20%20%20%20Sierra%20Leone%2CSLE%2C6.25%2C5.82%2C483%0A%20%20%20%20Singapore%2CSGP%2C10.15%2C9.32%2C17.7%0A%20%20%20%20South%20Africa%2CZAF%2C8.89%2C6.86%2C15.5%0A%20%20%20%20Sri%20Lanka%2CLKA%2C7.73%2C6.05%2C69.8%0A%20%20%20%20Sudan%2CSDN%2C7.31%2C4.00%2C88.2%0A%20%20%20%20Tanzania%2CTZA%2C6.25%2C6.64%2C145%0A%20%20%20%20Togo%2CTGO%2C7.22%2C6.91%2C668%0A%20%20%20%20Trinidad%20and%20Tobago%2CTTO%2C8.77%2C7.45%2C85%0A%20%20%20%20Tunisia%2CTUN%2C8.48%2C6.45%2C63%0A%20%20%20%20Uganda%2CUGA%2C6.97%2C4.45%2C280%0A%20%20%20%20Uruguay%2CURY%2C9.03%2C7.00%2C71%0A%20%20%20%20USA%2CUSA%2C10.22%2C10.00%2C15%0A%20%20%20%20Venezuela%2CVEN%2C9.07%2C7.14%2C78.1%0A%20%20%20%20Vietnam%2CVNM%2C7.28%2C6.41%2C140%0A%20%20%20%20Zaire%2CZAR%2C6.87%2C3.50%2C240%0A%20%20%20%20%22%22%22%0A%0A%20%20%20%20df%20%3D%20pd.read_csv(io.StringIO(AJR_CSV))%0A%20%20%20%20df%5B%22logem4%22%5D%20%3D%20np.log(df%5B%22mortality%22%5D.astype(float))%0A%20%20%20%20df%20%3D%20df.dropna(subset%3D%5B%22logpgp95%22%2C%20%22avexpr%22%2C%20%22logem4%22%5D).reset_index(drop%3DTrue)%0A%0A%20%20%20%20def%20ols_beta_se(y%2C%20x)%3A%0A%20%20%20%20%20%20%20%20res%20%3D%20sm.OLS(y%2C%20sm.add_constant(x)).fit(cov_type%3D%22HC1%22)%0A%20%20%20%20%20%20%20%20name%20%3D%20x.name%20if%20hasattr(x%2C%20%22name%22)%20and%20x.name%20else%200%0A%20%20%20%20%20%20%20%20key%20%3D%20name%20if%20name%20in%20res.params.index%20else%20res.params.index%5B1%5D%0A%20%20%20%20%20%20%20%20return%20float(res.params%5Bkey%5D)%2C%20float(res.bse%5Bkey%5D)%0A%0A%20%20%20%20def%20iv_beta_se(y%2C%20endog%2C%20instrument)%3A%0A%20%20%20%20%20%20%20%20%22%22%22Just-identified%202SLS%20via%20the%20IV%20slope%20formula%20%2B%20delta-method%20SE.%22%22%22%0A%20%20%20%20%20%20%20%20z%20%3D%20sm.add_constant(instrument)%0A%20%20%20%20%20%20%20%20%23%20Reduced%20form%20and%20first%20stage%0A%20%20%20%20%20%20%20%20rf%20%3D%20sm.OLS(y%2C%20z).fit()%0A%20%20%20%20%20%20%20%20fs%20%3D%20sm.OLS(endog%2C%20z).fit()%0A%20%20%20%20%20%20%20%20pi1%20%3D%20float(fs.params.iloc%5B1%5D)%0A%20%20%20%20%20%20%20%20if%20abs(pi1)%20%3C%201e-12%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20float(%22nan%22)%2C%20float(%22nan%22)%0A%20%20%20%20%20%20%20%20beta%20%3D%20float(rf.params.iloc%5B1%5D)%20%2F%20pi1%0A%0A%20%20%20%20%20%20%20%20%23%20Residuals%20for%20asymptotic%20IV%20variance%20(homoskedastic%20form%20is%20enough%20here)%0A%20%20%20%20%20%20%20%20x%20%3D%20sm.add_constant(endog.to_numpy())%0A%20%20%20%20%20%20%20%20resid%20%3D%20y.to_numpy()%20-%20x%20%40%20np.array(%5Bfloat(rf.params.iloc%5B0%5D)%2C%20beta%5D)%0A%20%20%20%20%20%20%20%20n%20%3D%20len(y)%0A%20%20%20%20%20%20%20%20sigma2%20%3D%20float(np.dot(resid%2C%20resid)%20%2F%20n)%0A%20%20%20%20%20%20%20%20z_mat%20%3D%20z.to_numpy()%0A%20%20%20%20%20%20%20%20endog_arr%20%3D%20endog.to_numpy()%0A%20%20%20%20%20%20%20%20%23%20Var(%CE%B2)%20%E2%89%88%20%CF%83%C2%B2%20%2F%20(n%20*%20Cov(x%CC%82%2C%20x)%C2%B2%20%2F%20Var(x%CC%82))%20with%20x%CC%82%20from%20first%20stage%0A%20%20%20%20%20%20%20%20x_hat%20%3D%20fs.fittedvalues.to_numpy()%0A%20%20%20%20%20%20%20%20s_xh_x%20%3D%20float(np.cov(x_hat%2C%20endog_arr%2C%20ddof%3D1)%5B0%2C%201%5D)%0A%20%20%20%20%20%20%20%20se%20%3D%20float(np.sqrt(sigma2%20%2F%20(n%20*%20s_xh_x**2)))%20if%20abs(s_xh_x)%20%3E%201e-12%20else%20float(%22nan%22)%0A%20%20%20%20%20%20%20%20return%20beta%2C%20se%0A%0A%20%20%20%20return%20df%2C%20iv_beta_se%2C%20np%2C%20ols_beta_se%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%201.%20The%20first%20stage%20(fixed)%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(df%2C%20mo)%3A%0A%20%20%20%20import%20matplotlib.pyplot%20as%20plt%0A%0A%20%20%20%20fig1%2C%20ax1%20%3D%20plt.subplots(figsize%3D(6%2C%204.2))%0A%20%20%20%20ax1.scatter(df%5B%22logem4%22%5D%2C%20df%5B%22avexpr%22%5D%2C%20color%3D%22%232f6f8f%22%2C%20alpha%3D0.75)%0A%20%20%20%20ax1.set_xlabel(%22Log%20settler%20mortality%20(instrument)%22)%0A%20%20%20%20ax1.set_ylabel(%22Avg.%20protection%20against%20expropriation%20(institutions)%22)%0A%20%20%20%20ax1.set_title(%22First%20stage%3A%20mortality%20predicts%20institutions%22)%0A%20%20%20%20fig1.tight_layout()%0A%0A%20%20%20%20mo.mpl.interactive(fig1)%0A%20%20%20%20return%20(plt%2C)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20Countries%20where%20European%20settlers%20died%20in%20droves%20(West%20Africa%2C%20e.g.)%0A%20%20%20%20got%20extractive%20institutions%20built%20to%20strip%20resources%2C%20not%20to%20last.%0A%20%20%20%20Countries%20that%20were%20survivable%20(Australia%2C%20the%20US%2C%20New%20Zealand)%20got%0A%20%20%20%20institutions%20built%20for%20settlers%20to%20live%20under%20long-term%20%E2%80%94%20and%20those%0A%20%20%20%20institutions%20persisted.%20That's%20the%20downward-sloping%20relationship%20above.%0A%0A%20%20%20%20%23%23%202.%20Drag%20the%20slider%3A%20how%20much%20noise%20is%20in%20our%20institutions%20measure%3F%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20noise_slider%20%3D%20mo.ui.slider(%0A%20%20%20%20%20%20%20%20start%3D0.0%2C%0A%20%20%20%20%20%20%20%20stop%3D2.5%2C%0A%20%20%20%20%20%20%20%20step%3D0.05%2C%0A%20%20%20%20%20%20%20%20value%3D0.0%2C%0A%20%20%20%20%20%20%20%20label%3D%22Measurement%20noise%20added%20to%20institutions%20(in%20SDs%20of%20avexpr)%22%2C%0A%20%20%20%20%20%20%20%20show_value%3DTrue%2C%0A%20%20%20%20%20%20%20%20full_width%3DTrue%2C%0A%20%20%20%20)%0A%20%20%20%20seed_number%20%3D%20mo.ui.number(start%3D0%2C%20stop%3D9999%2C%20value%3D42%2C%20label%3D%22Random%20seed%22)%0A%20%20%20%20mo.hstack(%5Bnoise_slider%2C%20seed_number%5D%2C%20justify%3D%22start%22%2C%20gap%3D2)%0A%20%20%20%20return%20noise_slider%2C%20seed_number%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(df%2C%20noise_slider%2C%20np%2C%20seed_number)%3A%0A%20%20%20%20rng%20%3D%20np.random.default_rng(int(seed_number.value))%0A%20%20%20%20avexpr_sd%20%3D%20df%5B%22avexpr%22%5D.std()%0A%20%20%20%20noise%20%3D%20rng.normal(0%2C%20noise_slider.value%20*%20avexpr_sd%2C%20size%3Dlen(df))%0A%20%20%20%20df_noisy%20%3D%20df.copy()%0A%20%20%20%20df_noisy%5B%22avexpr_noisy%22%5D%20%3D%20df%5B%22avexpr%22%5D%20%2B%20noise%0A%20%20%20%20return%20(df_noisy%2C)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(df_noisy%2C%20iv_beta_se%2C%20ols_beta_se)%3A%0A%20%20%20%20ols_beta%2C%20ols_se%20%3D%20ols_beta_se(df_noisy%5B%22logpgp95%22%5D%2C%20df_noisy%5B%22avexpr_noisy%22%5D)%0A%20%20%20%20iv_beta%2C%20iv_se%20%3D%20iv_beta_se(%0A%20%20%20%20%20%20%20%20df_noisy%5B%22logpgp95%22%5D%2C%0A%20%20%20%20%20%20%20%20df_noisy%5B%22avexpr_noisy%22%5D%2C%0A%20%20%20%20%20%20%20%20df_noisy%5B%22logem4%22%5D%2C%0A%20%20%20%20)%0A%20%20%20%20return%20iv_beta%2C%20iv_se%2C%20ols_beta%2C%20ols_se%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(iv_beta%2C%20iv_se%2C%20mo%2C%20noise_slider%2C%20ols_beta%2C%20ols_se)%3A%0A%20%20%20%20mo.hstack(%0A%20%20%20%20%20%20%20%20%5B%0A%20%20%20%20%20%20%20%20%20%20%20%20mo.stat(%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20value%3Df%22%7Bols_beta%3A.3f%7D%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20label%3D%22OLS%20coefficient%20(%C2%B1%20%7B%3A.3f%7D%20SE)%22.format(ols_se)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20caption%3D%22log%20GDP%20per%20capita%20per%20unit%20of%20institutions%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20bordered%3DTrue%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20mo.stat(%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20value%3Df%22%7Biv_beta%3A.3f%7D%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20label%3D%222SLS%20coefficient%20(%C2%B1%20%7B%3A.3f%7D%20SE)%22.format(iv_se)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20caption%3D%22instrumented%20by%20log%20settler%20mortality%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20bordered%3DTrue%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20)%2C%0A%20%20%20%20%20%20%20%20%5D%2C%0A%20%20%20%20%20%20%20%20gap%3D2%2C%0A%20%20%20%20)%20if%20noise_slider.value%20%3E%3D%200%20else%20None%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%203.%20Watch%20it%20happen%20across%20the%20whole%20noise%20range%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(df%2C%20iv_beta_se%2C%20np%2C%20ols_beta_se%2C%20seed_number)%3A%0A%20%20%20%20def%20estimate_at(noise_level%2C%20seed)%3A%0A%20%20%20%20%20%20%20%20rng_%20%3D%20np.random.default_rng(seed)%0A%20%20%20%20%20%20%20%20avexpr_sd_%20%3D%20df%5B%22avexpr%22%5D.std()%0A%20%20%20%20%20%20%20%20d%20%3D%20df.copy()%0A%20%20%20%20%20%20%20%20d%5B%22avexpr_noisy%22%5D%20%3D%20d%5B%22avexpr%22%5D%20%2B%20rng_.normal(%0A%20%20%20%20%20%20%20%20%20%20%20%200%2C%20noise_level%20*%20avexpr_sd_%2C%20size%3Dlen(d)%0A%20%20%20%20%20%20%20%20)%0A%20%20%20%20%20%20%20%20ols_b%2C%20_%20%3D%20ols_beta_se(d%5B%22logpgp95%22%5D%2C%20d%5B%22avexpr_noisy%22%5D)%0A%20%20%20%20%20%20%20%20iv_b%2C%20_%20%3D%20iv_beta_se(d%5B%22logpgp95%22%5D%2C%20d%5B%22avexpr_noisy%22%5D%2C%20d%5B%22logem4%22%5D)%0A%20%20%20%20%20%20%20%20return%20ols_b%2C%20iv_b%0A%0A%20%20%20%20noise_grid%20%3D%20np.linspace(0%2C%202.5%2C%2030)%0A%20%20%20%20curve%20%3D%20%5Bestimate_at(n%2C%20int(seed_number.value))%20for%20n%20in%20noise_grid%5D%0A%20%20%20%20ols_curve%20%3D%20%5Bc%5B0%5D%20for%20c%20in%20curve%5D%0A%20%20%20%20iv_curve%20%3D%20%5Bc%5B1%5D%20for%20c%20in%20curve%5D%0A%20%20%20%20return%20iv_curve%2C%20noise_grid%2C%20ols_curve%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(iv_curve%2C%20mo%2C%20noise_grid%2C%20noise_slider%2C%20ols_curve%2C%20plt)%3A%0A%20%20%20%20fig2%2C%20ax2%20%3D%20plt.subplots(figsize%3D(7%2C%204.5))%0A%20%20%20%20ax2.plot(noise_grid%2C%20ols_curve%2C%20color%3D%22%23c0562f%22%2C%20linewidth%3D2%2C%20label%3D%22OLS%22)%0A%20%20%20%20ax2.plot(noise_grid%2C%20iv_curve%2C%20color%3D%22%232f6f8f%22%2C%20linewidth%3D2%2C%20label%3D%222SLS%20(IV)%22)%0A%20%20%20%20ax2.axvline(noise_slider.value%2C%20color%3D%22gray%22%2C%20linestyle%3D%22--%22%2C%20linewidth%3D1)%0A%20%20%20%20ax2.axhline(0%2C%20color%3D%22black%22%2C%20linewidth%3D0.6)%0A%20%20%20%20ax2.set_xlabel(%22Measurement%20noise%20added%20(SDs%20of%20avexpr)%22)%0A%20%20%20%20ax2.set_ylabel(%22Estimated%20coefficient%20on%20institutions%22)%0A%20%20%20%20ax2.set_title(%22OLS%20attenuates%20toward%20zero%3B%202SLS%20doesn't%22)%0A%20%20%20%20ax2.legend()%0A%20%20%20%20fig2.tight_layout()%0A%0A%20%20%20%20mo.mpl.interactive(fig2)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Why%20this%20happens%0A%0A%20%20%20%20Classical%20measurement%20error%20in%20a%20regressor%20biases%20OLS%20**toward%20zero**%20%E2%80%94%0A%20%20%20%20the%20noisier%20your%20measure%20of%20institutions%2C%20the%20more%20the%20true%20signal%20gets%0A%20%20%20%20drowned%20out%2C%20and%20the%20estimated%20effect%20shrinks.%20That's%20attenuation%20bias%2C%0A%20%20%20%20and%20the%20curve%20above%20shows%20it%20happening%20in%20real%20time%20as%20the%20slider%20moves.%0A%0A%20%20%20%202SLS%20doesn't%20have%20this%20problem%20*for%20this%20specific%20kind%20of%20error*%2C%20because%0A%20%20%20%20settler%20mortality%20was%20fixed%20centuries%20before%20anyone%20measured%0A%20%20%20%20expropriation%20risk%20in%20the%201980s%E2%80%9390s.%20The%20noise%20we're%20injecting%20is%0A%20%20%20%20uncorrelated%20with%20the%20instrument%20by%20construction%2C%20so%20it%20passes%20through%0A%20%20%20%20to%20the%20first%20stage%20but%20doesn't%20bias%20the%20ratio%20of%20reduced-form%20to%0A%20%20%20%20first-stage%20coefficients%20that%202SLS%20relies%20on.%0A%0A%20%20%20%20This%20is%20also%2C%20not%20coincidentally%2C%20the%20exact%20mechanism%20AJR%20lean%20on%20for%0A%20%20%20%20their%20*substantive*%20claim%3A%20they%20argue%20current%20institutions%20are%20measured%0A%20%20%20%20with%20error%20and%20confounded%20by%20reverse%20causation%20from%20income%2C%20which%20is%20why%0A%20%20%20%20OLS%20understates%20the%20effect%20of%20institutions%20on%20growth%20relative%20to%202SLS%20in%0A%20%20%20%20their%20actual%20results%20(Table%204).%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20import%20marimo%20as%20mo%0A%0A%20%20%20%20return%20(mo%2C)%0A%0A%0Aif%20__name__%20%3D%3D%20%22__main__%22%3A%0A%20%20%20%20app.run()%0A</marimo-code></head>
+  <body>
+    <div id="root"></div>
+    <script data-marimo="true">
+      Object.defineProperty(window, "__MARIMO_MOUNT_CONFIG__", {
+        value: Object.freeze({
+            "filename": "notebook.py",
+            "cwd": "",
+            "lspWorkspace": null,
+            "mode": "read",
+            "version": "0.23.14",
+            "serverToken": "unused",
+            "config": {"ai": {"custom_providers": {}, "enabled": true, "models": {"custom_models": [], "displayed_models": []}}, "completion": {"activate_on_typing": true, "auto_close_pairs": true, "copilot": false, "signature_hint_on_typing": false}, "diagnostics": {"sql_linter": true}, "display": {"cell_output": "below", "code_editor_font_size": 14, "dataframes": "rich", "default_table_max_columns": 50, "default_table_page_size": 10, "default_width": "medium", "reference_highlighting": true, "theme": "light"}, "formatting": {"line_length": 79}, "keymap": {"overrides": {}, "preset": "default"}, "language_servers": {"pylsp": {"enable_flake8": false, "enable_mypy": true, "enable_pydocstyle": false, "enable_pyflakes": false, "enable_pylint": false, "enable_ruff": true, "enabled": false}}, "mcp": {"mcpServers": {}, "presets": []}, "package_management": {"manager": "pip"}, "runtime": {"auto_instantiate": false, "auto_reload": "off", "default_csv_encoding": "utf-8", "default_sql_output": "auto", "on_cell_change": "autorun", "output_max_bytes": 8000000, "reactive_tests": true, "show_tracebacks": false, "std_stream_max_bytes": 1000000, "watcher_on_save": "lazy"}, "save": {"autosave": "off", "autosave_delay": 1000, "format_on_save": false}, "server": {"browser": "default", "follow_symlink": false}, "snippets": {"custom_paths": [], "include_default_snippets": true}},
+            "configOverrides": {},
+            "appConfig": {"sql_output": "auto", "width": "medium"},
+            "view": {"showAppCode": false},
+            "notebook": null,
+            "session": null,
+            "runtimeConfig": null,
+        }),
+        writable: false,
+        configurable: false,
+      });
+    </script>
+  </body>
+</html>
